@@ -32,16 +32,17 @@ public class Produto {
         return 0;
     }
     
-    public void getNome(){
-        System.out.println(this.nome);
-    }
-    public void getPreco(){
-        System.out.println(this.preco);
+    public void getProduto(){
+        System.out.println("O nome desse item é: " + this.nome);
+        System.out.println("O valor desse item é: " + this.preco);
     }
     
+    
     public void getLista(){
-        produtos.forEach(p -> p.getNome());
-        produtos.forEach(p-> p.getPreco());
+        produtos.forEach(p -> p.getProduto());
+ 
     }    
 
+    
+    
 }
