@@ -1,15 +1,34 @@
+import Lanchonete.Produto;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.DoubleToIntFunction;
+
 public class Pedidos {
 
     private int numeroPedido;
-    private Produtos[] produtos;
+    private Produtos[] produto;
     private int quantidadeProdutos;
     private String status;
+    private List <Produto> produtos;
+
+
 
     public Pedidos(int numeroPedido, int capacidade) {
         this.numeroPedido = numeroPedido;
-        this.produtos = new Produtos[capacidade];
+        this.produto = new Produtos[capacidade];
         this.quantidadeProdutos = 0;
         this.status = "Pendente";
+        this.produtos = new ArrayList<>();
+    }
+
+    public void adicionarProdutoLista(Produto produto){
+        produtos.add(produto);
+    }
+
+    public void getProdutoLista(){
+        for (int i=0; i < produtos.size(); i++){
+        System.out.println(produtos.get(i));
+        }
     }
 
     public int getNumeroPedido() {
@@ -22,11 +41,11 @@ public class Pedidos {
 
     
     public Produtos[] getProdutos() {
-        return produtos;
+        return produto;
     }
 
-    public void setProdutos(Produtos[] produtos) {
-        this.produtos = produtos;
+    public void setProdutos(Produtos[] produto) {
+        this.produto = produto;
     }
 
   

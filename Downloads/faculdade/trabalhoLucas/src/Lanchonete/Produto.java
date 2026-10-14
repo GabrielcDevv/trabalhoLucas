@@ -11,8 +11,7 @@ public class Produto {
     private String nome;
     private double preco;
 
-    Produto(int tipoProduto, String nome, double preco) {
-        this.id = id;
+    Produto(int tipoProduto, String nome, double preco){
         this.tipoProduto = tipoProduto;
         setNome(nome);
         setPreco(preco);
@@ -67,7 +66,6 @@ public class Produto {
     }
 
     public void getProduto() {
-        System.out.println(getId());
         System.out.println("O nome desse item é: " + getNome());
         System.out.println("O valor desse item é: " + getPreco());
         System.out.println("------------------------------------");
