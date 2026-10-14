@@ -2,6 +2,7 @@ package Lanchonete;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Produto {
 
@@ -9,20 +10,20 @@ public class Produto {
     private int tipoProduto;
     private String nome;
     private double preco;
-    private List<Produto> produtos;
 
-    Produto(int id, int tipoProduto, String nome, double preco) {
+    Produto(int tipoProduto, String nome, double preco) {
         this.id = id;
         this.tipoProduto = tipoProduto;
         setNome(nome);
         setPreco(preco);
-        this.produtos = new ArrayList<>();
     }
 
-    public double adicionarProduto(Produto p) {
-        this.produtos.add(p);
-        return 0;
-    }
+   
+    
+    //public void adicionarProduto(Produto produto) {
+    //    produtos.add(produto);
+    //}
+    //
 
     public String setNome(String nome) {
         this.nome = nome;
@@ -60,11 +61,11 @@ public class Produto {
     public String getNome() {
         return this.nome;
     }
-    
-    public int getId(){
+
+    public int getId() {
         return this.id;
     }
-    
+
     public void getProduto() {
         System.out.println(getId());
         System.out.println("O nome desse item é: " + getNome());
@@ -72,11 +73,7 @@ public class Produto {
         System.out.println("------------------------------------");
     }
 
-    public void getLista() {
-        produtos.forEach(p -> p.getProduto());
-    }
-    
-
-    
-    
+   // public void getLista() {
+     //   produtos.forEach(produto -> produto.getProduto());
+    //}
 }
