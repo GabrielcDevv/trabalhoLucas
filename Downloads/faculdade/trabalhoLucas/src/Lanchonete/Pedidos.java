@@ -1,24 +1,25 @@
 import Lanchonete.Produto;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.DoubleToIntFunction;
+
 
 public class Pedidos {
 
     private int numeroPedido;
-    private Produtos[] produto;
+    private Produto[] produto;
     private int quantidadeProdutos;
     private String status;
     private List <Produto> produtos;
-
+    private int capacidade;
 
 
     public Pedidos(int numeroPedido, int capacidade) {
         this.numeroPedido = numeroPedido;
-        this.produto = new Produtos[capacidade];
+        this.produto = new Produto[capacidade];
         this.quantidadeProdutos = 0;
         this.status = "Pendente";
         this.produtos = new ArrayList<>();
+        this.capacidade = capacidade;
     }
 
     public void adicionarProdutoLista(Produto produto){
@@ -27,7 +28,8 @@ public class Pedidos {
 
     public void getProdutoLista(){
         for (int i=0; i < produtos.size(); i++){
-        System.out.println(produtos.get(i));
+        System.out.println(produtos.get(i).getNome());
+        System.out.println(produtos.get(i).getPreco());
         }
     }
 
@@ -40,16 +42,16 @@ public class Pedidos {
     }
 
     
-    public Produtos[] getProdutos() {
+    public Produto[] getProduto() {
         return produto;
     }
 
-    public void setProdutos(Produtos[] produto) {
+    public void setProduto(Produto[] produto) {
         this.produto = produto;
     }
 
   
-    public int getQuantidadeProdutos() {
+    public int getQuantidadeProduto() {
         return quantidadeProdutos;
     }
 
@@ -65,10 +67,10 @@ public class Pedidos {
         this.status = status;
     }
 
-    public void adicionarProduto(Produtos produto) {
+    public void adicionarProduto(Produto produto) {
 
-        if (quantidadeProdutos < produtos.length) {
-            produtos[quantidadeProdutos] = produto;
+        if (produtos.size() < capacidade) {
+            produtos.add(produto);
             quantidadeProdutos++;
 
             System.out.println("Produto adicionado ao pedido!");
@@ -82,10 +84,10 @@ public class Pedidos {
         if (posicao >= 0 && posicao < quantidadeProdutos) {
 
             for (int i = posicao; i < quantidadeProdutos - 1; i++) {
-                produtos[i] = produtos[i + 1];
+                produto[i] = produto[i + 1];
             }
 
-            produtos[quantidadeProdutos - 1] = null;
+            produto[quantidadeProdutos - 1] = null;
             quantidadeProdutos--;
 
             System.out.println("Produto removido!");
@@ -99,7 +101,7 @@ public class Pedidos {
         double total = 0;
 
         for (int i = 0; i < quantidadeProdutos; i++) {
-            total += produtos[i].getPreco();
+            total += produto[i].getPreco();
         }
 
         return total;
@@ -121,9 +123,9 @@ public class Pedidos {
 
                 System.out.println(
                     (i + 1) + " - " +
-                    produtos[i].getNome() +
+                    produto[i].getNome() +
                     " - R$ " +
-                    String.format("%.2f", produtos[i].getPreco())
+                    String.format("%.2f", produto[i].getPreco())
                 );
             }
         }
