@@ -1,8 +1,5 @@
 package Lanchonete;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 public class Produto {
 
@@ -16,14 +13,7 @@ public class Produto {
         setNome(nome);
         setPreco(preco);
     }
-
-   
     
-    //public void adicionarProduto(Produto produto) {
-    //    produtos.add(produto);
-    //}
-    //
-
     public String setNome(String nome) {
         this.nome = nome;
         return this.nome;
@@ -71,7 +61,5 @@ public class Produto {
         System.out.println("------------------------------------");
     }
 
-   // public void getLista() {
-     //   produtos.forEach(produto -> produto.getProduto());
-    //}
+   
 }

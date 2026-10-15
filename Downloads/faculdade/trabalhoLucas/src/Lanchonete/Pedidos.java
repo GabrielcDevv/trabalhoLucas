@@ -1,6 +1,4 @@
 import Lanchonete.Produto;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class Pedidos {
@@ -9,7 +7,7 @@ public class Pedidos {
     private Produto[] produto;
     private int quantidadeProdutos;
     private String status;
-    private List <Produto> produtos;
+
     private int capacidade;
 
 
@@ -18,20 +16,9 @@ public class Pedidos {
         this.produto = new Produto[capacidade];
         this.quantidadeProdutos = 0;
         this.status = "Pendente";
-        this.produtos = new ArrayList<>();
         this.capacidade = capacidade;
     }
 
-    public void adicionarProdutoLista(Produto produto){
-        produtos.add(produto);
-    }
-
-    public void getProdutoLista(){
-        for (int i=0; i < produtos.size(); i++){
-        System.out.println(produtos.get(i).getNome());
-        System.out.println(produtos.get(i).getPreco());
-        }
-    }
 
     public int getNumeroPedido() {
         return numeroPedido;
@@ -67,17 +54,6 @@ public class Pedidos {
         this.status = status;
     }
 
-    public void adicionarProduto(Produto produto) {
-
-        if (produtos.size() < capacidade) {
-            produtos.add(produto);
-            quantidadeProdutos++;
-
-            System.out.println("Produto adicionado ao pedido!");
-        } else {
-            System.out.println("O pedido está cheio!");
-        }
-    }
 
     public void removerProduto(int posicao) {
 
