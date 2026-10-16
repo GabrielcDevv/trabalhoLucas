@@ -25,7 +25,7 @@ public class Main{
         Produtos produtonaLista = new Produtos(); 
 
 
-
+//tem q abrir um um while nisso aqui pq fica rodando em looping para evitar q o cliente quebre, ass:Will
         System.out.println("O que voce deseja fazer\n" + "1-Pedido" + "2-Produto" + "3-Cliente");
         int escolha = scanner.nextInt();
         switch (escolha) {
