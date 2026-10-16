@@ -3,27 +3,20 @@ package Lanchonete;
 
 public class Produto {
 
-    private int id;
     private int tipoProduto;
     private String nome;
     private double preco;
 
     Produto(int tipoProduto, String nome, double preco){
         this.tipoProduto = tipoProduto;
-        setNome(nome);
-        setPreco(preco);
+        this.nome = nome;
+        this.preco = preco;
+    }
+
+    public int getTipoProduto() {
+        return this.tipoProduto;
     }
     
-    public String setNome(String nome) {
-        this.nome = nome;
-        return this.nome;
-    }
-
-    public double setPreco(double preco) {
-        this.preco = preco;
-        return this.preco;
-    }
-
     public double trocaPreco(double preco) {
         if (preco != this.preco && preco > 0) {
             this.preco = preco;
@@ -51,15 +44,4 @@ public class Produto {
         return this.nome;
     }
 
-    public int getId() {
-        return this.id;
-    }
-
-    public void getProduto() {
-        System.out.println("O nome desse item é: " + getNome());
-        System.out.println("O valor desse item é: " + getPreco());
-        System.out.println("------------------------------------");
-    }
-
-   
 }
