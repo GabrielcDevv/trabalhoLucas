@@ -11,7 +11,6 @@ public class Cliente {
         this.telefone = telefone;
     }
 
-    // Getters and Setters
     public String getNome() {
         return nome;
     }
