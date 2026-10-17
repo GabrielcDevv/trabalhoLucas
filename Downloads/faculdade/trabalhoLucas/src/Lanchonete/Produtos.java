@@ -45,6 +45,9 @@ public class Produtos{
                 double novoPreco = scan.nextDouble();
                 produto.trocaPreco(novoPreco);
             }
+            default ->  {
+                Main.menuProduto();
+            }
         }
         return produto;
     }
