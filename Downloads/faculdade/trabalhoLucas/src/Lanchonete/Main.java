@@ -11,9 +11,14 @@ public class Main{
         System.out.println("1-Comida\n");
         System.out.println("2-Bebida\n");
         int tipoProduto = scanner.nextInt();
-
+        
+        if (tipoProduto !=1 || tipoProduto !=2){
+            System.out.println("Digite uma opcao valida");
+        } else {
+                
         System.out.println("Qual o nome do produto?");
         String nome = scanner.next();
+
 
         System.out.println("Qual o valor do produto?");
         double preco = scanner.nextDouble();
@@ -21,18 +26,23 @@ public class Main{
         Produto produto = new Produto(tipoProduto, nome, preco);
         produtoLista.adcionarNaLista(produto);;
         produtoLista.getProdutos();
+            }
+        }
+        
    
         
 
     }
 
     public static void menuProduto(){
+        try{
                 Scanner scanner = new Scanner(System.in);
                 System.out.println("O que voce quer fazer?\n");
                 System.out.println("1-Cadastrar novo produto\n");
                 System.err.println("2-Modificar um produto\n");
                 System.out.println("3-Sair");
                 int escolha = scanner.nextInt();
+
 
                 switch(escolha){
                  case 1 ->{
@@ -42,18 +52,28 @@ public class Main{
                  }
                  case 2->{
                     System.out.println("Escolha o numero produto voce quer modificar\n");
-                    produtoLista.getProdutos();
+                    Main.produtoLista.getProdutos();
                     int produtoParaMudanca = scanner.nextInt();
-                    produtoLista.produtoParaMudanca(produtoParaMudanca);
+                    Main.produtoLista.produtoParaMudanca(produtoParaMudanca);
                     menuProduto();
                  }
                  case 3->{
                     menuPrincipal();
                  }
+                 default -> {
+                    System.out.println("Digite uma opcao valida");
+                    menuProduto();
+                 }
+                }
+                 
+                }
+                catch(Exception e){
+                    System.out.println("Digite uma opcao valida");
                 }
     }
     public static void menuPrincipal(){
-        Scanner scanner = new Scanner(System.in);
+        try {       
+         Scanner scanner = new Scanner(System.in);
 
         System.out.println("O que voce deseja fazer\n");
         System.out.println("1-Pedido\n");
@@ -65,16 +85,22 @@ public class Main{
                 //pedido
             }
             case 2 -> {
-                Main.menuProduto();
+                menuProduto();
                 }
             case 3 ->{
                 //cliente
             }
+            default ->   {
+                    System.out.println("Digite uma opcao valida");
+                    menuPrincipal();
             }
+        }
+        } catch (Exception e){
+            System.out.println("Digite uma opcao valida");
+        }
     }
 
     public static void main(String[] args) {
-        Main.menuPrincipal();
+        menuPrincipal();
         
     }
-}
