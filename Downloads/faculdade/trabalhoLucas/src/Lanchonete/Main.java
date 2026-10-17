@@ -1,6 +1,7 @@
 package Lanchonete;
 import java.util.Scanner;
 
+
 public class Main{
     static Produtos produtoLista = new Produtos();
 
@@ -12,27 +13,23 @@ public class Main{
         System.out.println("2-Bebida\n");
         int tipoProduto = scanner.nextInt();
         
-        if (tipoProduto !=1 || tipoProduto !=2){
-            System.out.println("Digite uma opcao valida");
-        } else {
+        if (tipoProduto ==1 || tipoProduto ==2){
+             System.out.println("Qual o nome do produto?");
+            String nome = scanner.next();
+
+
+            System.out.println("Qual o valor do produto?");
+            double preco = scanner.nextDouble();
+
+            Produto produto = new Produto(tipoProduto, nome, preco);
+            produtoLista.adcionarNaLista(produto);;
+            produtoLista.getProdutos();
+            } else {
                 
-        System.out.println("Qual o nome do produto?");
-        String nome = scanner.next();
-
-
-        System.out.println("Qual o valor do produto?");
-        double preco = scanner.nextDouble();
-
-        Produto produto = new Produto(tipoProduto, nome, preco);
-        produtoLista.adcionarNaLista(produto);;
-        produtoLista.getProdutos();
+                System.out.println("Digite uma opcao valida\n");
             }
-        }
-        
-   
-        
-
     }
+        
 
     public static void menuProduto(){
         try{
@@ -52,23 +49,25 @@ public class Main{
                  }
                  case 2->{
                     System.out.println("Escolha o numero produto voce quer modificar\n");
-                    Main.produtoLista.getProdutos();
+                    produtoLista.getProdutos();
                     int produtoParaMudanca = scanner.nextInt();
-                    Main.produtoLista.produtoParaMudanca(produtoParaMudanca);
+                    produtoLista.produtoParaMudanca(produtoParaMudanca);
                     menuProduto();
                  }
                  case 3->{
                     menuPrincipal();
                  }
                  default -> {
-                    System.out.println("Digite uma opcao valida");
+                    System.out.println("Digite uma opcao valida\n");
                     menuProduto();
                  }
                 }
                  
                 }
                 catch(Exception e){
-                    System.out.println("Digite uma opcao valida");
+                    System.out.println("Digite uma opcao valida\n");
+                    menuProduto();
+
                 }
     }
     public static void menuPrincipal(){
@@ -103,4 +102,5 @@ public class Main{
     public static void main(String[] args) {
         menuPrincipal();
         
+    }
     }
