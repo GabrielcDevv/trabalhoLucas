@@ -9,7 +9,15 @@ public class Produto {
 
     Produto(int tipoProduto, String nome, double preco){
         this.tipoProduto = tipoProduto;
+        setNome(nome);
+        setPreco(preco);
+    }
+
+    public void setNome(String nome){
         this.nome = nome;
+    }
+
+    public void setPreco(double preco){
         this.preco = preco;
     }
 
@@ -18,21 +26,21 @@ public class Produto {
     }
     
     public double trocaPreco(double preco) {
-        if (preco != this.preco && preco > 0) {
-            this.preco = preco;
+        if (preco != getPreco() && preco > 0) {
+            setPreco(preco);
         } else {
             System.out.println("Troca de valor invalida, preco não atualizado\n");
         }
-        return this.preco;
+        return getPreco();
     }
 
     public String trocaNome(String nome) {
-        if (nome.equals(this.nome)) {
+        if (nome.equals(getNome())) {
             System.out.println("Troca de nome invalida, não realizada \n");
         } else {
-            this.nome = nome;
+            setNome(nome);
         }
-        return this.nome;
+        return getNome();
 
     }
 
