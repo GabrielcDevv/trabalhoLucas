@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Main{
     static Produtos produtoLista = new Produtos();
+    static Clientes clienteLista = new Clientes();
 
     public static void cadastrarProduto() {
         Scanner scanner = new Scanner(System.in);
@@ -70,6 +71,65 @@ public class Main{
 
                 }
     }
+
+    public static void menuCliente(){
+        try{
+                Scanner scanner = new Scanner(System.in);
+                System.out.println("O que voce quer fazer?\n");
+                System.out.println("1-Cadastrar novo cliente\n");
+                System.err.println("2-Modificar um cliente\n");
+                System.out.println("3-Sair");
+                int escolha = scanner.nextInt();
+
+
+                switch(escolha){
+                 case 1 ->{
+                    Main.cadastrarCliente();
+                    menuCliente();
+                    break;
+                 }
+                 case 2->{
+                    System.out.println("Escolha o numero cliente voce quer modificar\n");
+                    clienteLista.listarCliente();
+                    int clienteParaMudanca = scanner.nextInt();
+                    clienteLista.modificarCliente(clienteParaMudanca);
+                    menuCliente();
+                 }
+                 case 3->{
+                    menuPrincipal();
+                 }
+                 default -> {
+                    System.out.println("Digite uma opcao valida\n");
+                    menuCliente();
+                 }
+                }
+                 
+                }
+                catch(Exception e){
+                    System.out.println("Digite uma opcao valida\n");
+                    menuCliente();
+
+                }
+    }
+
+    public static void cadastrarCliente() {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("Qual o nome do cliente?");
+        String nome = scanner.nextLine();
+
+        System.out.println("Qual o endereco do cliente?");
+        String endereco = scanner.nextLine();
+
+        System.out.println("Qual o telefone do cliente?");
+        String telefone = scanner.nextLine();
+
+        Cliente cliente = new Cliente(nome, endereco, telefone);
+
+        clienteLista.lista(cliente);
+        
+    }
+
     public static void menuPrincipal(){
         try {       
          Scanner scanner = new Scanner(System.in);
@@ -87,7 +147,7 @@ public class Main{
                 menuProduto();
                 }
             case 3 ->{
-                //cliente
+                menuCliente();
             }
             default ->   {
                     System.out.println("Digite uma opcao valida");
