@@ -3,12 +3,6 @@ import java.util.Scanner;
 
 public class Main{
 
-  private static final int MAX_PEDIDOS = 100;
-    private static Pedidos[] pedidos = new Pedidos[MAX_PEDIDOS];
-    private static int totalPedidos = 0;
-    private static int proximoNumero = 1;        
-
-
     public static void cadastrarProduto() {
         Produtos produtoLista = new Produtos();
         Scanner scanner = new Scanner(System.in);
@@ -60,11 +54,5 @@ public class Main{
 
 
     }
-
-     private static final int MAX_PEDIDOS = 100;
-    private static Pedidos[] pedidos = new Pedidos[MAX_PEDIDOS];
-    private static int totalPedidos = 0;
-    private static int proximoNumero = 1;        
-
 
 }
