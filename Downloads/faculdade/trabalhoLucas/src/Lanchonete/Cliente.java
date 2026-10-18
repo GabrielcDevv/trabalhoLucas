@@ -11,6 +11,7 @@ public class Cliente {
         this.telefone = telefone;
     }
 
+    // Getters and Setters
     public String getNome() {
         return nome;
     }
@@ -33,31 +34,5 @@ public class Cliente {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
-    }
-    public String trocaNome(String nome){
-        if(nome.equals(getNome())){
-            System.out.println("Digite um nome diferente");
-        }else{
-            setNome(nome);
-        }
-        return getNome();
-    }
-
-    public String trocaEndereco(String endereco){
-        if(endereco.equals(getEndereco())){
-            System.out.println("Digite um endereço diferente");
-        }else{
-            setEndereco(endereco);
-        }
-        return getEndereco();
-    }
-
-    public String trocaTelefone(String telefone){
-        if(telefone.equals(getTelefone())){
-            System.out.println("Digite um telefone diferente");
-        }else{
-            setTelefone(telefone);
-        }
-        return getTelefone();
     }
 }
