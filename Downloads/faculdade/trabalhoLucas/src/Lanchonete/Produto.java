@@ -3,7 +3,6 @@ package Lanchonete;
 
 public class Produto {
 
-    private int id;
     private int tipoProduto;
     private String nome;
     private double preco;
@@ -13,37 +12,40 @@ public class Produto {
         setNome(nome);
         setPreco(preco);
     }
-    
-    public String setNome(String nome) {
+
+    public void setNome(String nome){
         this.nome = nome;
-        return this.nome;
     }
 
-    public double setPreco(double preco) {
+    public void setPreco(double preco){
         this.preco = preco;
-        return this.preco;
     }
 
+    public int getTipoProduto() {
+        return this.tipoProduto;
+    }
+    
     public double trocaPreco(double preco) {
-        if (preco != this.preco && preco > 0) {
-            this.preco = preco;
+    
+        if (preco != getPreco() && preco > 0) {
+            setPreco(preco);
         } else {
             System.out.println("Troca de valor invalida, preco não atualizado\n");
         }
-        return this.preco;
+        return getPreco();
     }
 
     public String trocaNome(String nome) {
-        if (nome.equals(this.nome)) {
+        if (nome.equals(getNome())) {
             System.out.println("Troca de nome invalida, não realizada \n");
         } else {
-            this.nome = nome;
+            setNome(nome);
         }
-        return this.nome;
+        return getNome();
 
     }
 
-    public double getPreco() {
+     public double getPreco() {
         return this.preco;
     }
 
@@ -51,15 +53,4 @@ public class Produto {
         return this.nome;
     }
 
-    public int getId() {
-        return this.id;
-    }
-
-    public void getProduto() {
-        System.out.println("O nome desse item é: " + getNome());
-        System.out.println("O valor desse item é: " + getPreco());
-        System.out.println("------------------------------------");
-    }
-
-   
 }
