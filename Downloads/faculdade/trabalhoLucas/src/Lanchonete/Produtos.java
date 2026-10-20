@@ -51,4 +51,9 @@ public class Produtos{
         }
         return produto;
     }
+
+    public Produto buscarProduto(int indice) {
+        if (indice < 0 || indice >= produtos.size()) return null;
+        return produtos.get(indice);
+    }
 }
