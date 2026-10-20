@@ -1,14 +1,18 @@
-# 🍔 Sistema de Lanchonete
+#  Sistema de Lanchonete
 
 Projeto acadêmico desenvolvido em **Java**, com uma aplicação de console para organizar produtos e clientes de uma lanchonete.
 
-## 📋 Sobre o projeto
+##  Sobre o projeto
 
 O sistema utiliza menus interativos no terminal e conceitos de Programação Orientada a Objetos (POO), como classes, atributos privados, construtores, métodos getters e setters e listas de objetos.
 
 Atualmente, o programa permite cadastrar e consultar produtos e cadastrar clientes, além de alterar informações já registradas durante a execução.
 
-## ✨ Funcionalidades
+## Descrição do Problema
+
+Foi Criado um sistema que permite cadastro/edição de produtos, clientes e pedidos.
+
+##  Funcionalidades
 
 ### Produtos
 - Cadastrar produtos dos tipos **comida** ou **bebida**.
@@ -25,18 +29,18 @@ Atualmente, o programa permite cadastrar e consultar produtos e cadastrar client
 
 ### Pedidos
 - Existe uma classe `Pedidos` com atributos para número do pedido, quantidade de produtos, status e capacidade.
-- A integração de pedidos ao menu principal ainda não está implementada.
+- Criação de pedidos com integração de produtos e clientes cadastrados no sistema.
 
 > **Observação:** os dados são armazenados em listas na memória durante a execução. O projeto não implementa persistência em banco de dados ou arquivos; ao encerrar o programa, os registros cadastrados são perdidos.
 
-## 🛠️ Tecnologias
+##  Tecnologias
 
 - **Java**
 - **Java Collections Framework** (`ArrayList` e `List`)
 - **Scanner** para entrada de dados pelo terminal
 - **Git e GitHub** para versionamento do código
 
-## 📁 Estrutura do projeto
+##  Estrutura do projeto
 
 ```text
 src/
@@ -49,7 +53,7 @@ src/
     └── Pedidos.java    # Modelo de dados de pedido
 ```
 
-## ✅ Pré-requisitos
+##  Pré-requisitos
 
 - **JDK 21 ou superior**, pois o código utiliza recursos de sintaxe moderna do Java e o método `List.addLast`.
 - Um terminal ou uma IDE compatível com Java, como IntelliJ IDEA, Eclipse ou Visual Studio Code com suporte a Java.
@@ -61,7 +65,7 @@ java -version
 javac -version
 ```
 
-## ▶️ Como executar
+## Como executar
 
 ### 1. Baixe o repositório
 
@@ -96,7 +100,7 @@ java -cp out Lanchonete.Main
 
 Se a estrutura de pastas do seu ambiente for diferente, ajuste os caminhos dos comandos para apontar para a pasta `src`.
 
-## 🧭 Utilização
+##  Utilização
 
 Ao iniciar, o programa apresenta um menu principal com opções para pedidos, produtos e clientes.
 
@@ -106,14 +110,16 @@ Ao iniciar, o programa apresenta um menu principal com opções para pedidos, pr
 
 Os cadastros são feitos pelo terminal, seguindo as perguntas e opções exibidas na tela.
 
-## 🎓 Objetivo acadêmico
+##  Objetivo acadêmico
 
 O projeto tem como objetivo praticar fundamentos de Java e organização de código em classes, aplicando conceitos de orientação a objetos em um cenário simples de gerenciamento de lanchonete.
 
-## 👤 Autoria
+##  Autoria
 
-Projeto hospedado no GitHub por [GabrielcDevv](https://github.com/GabrielcDevv), no repositório [`trabalhoLucas`](https://github.com/GabrielcDevv/trabalhoLucas).
+Erick Kran, Gabriel Campos e Wilames
 
-## 📄 Licença
+## Divisão de responsabilidades
 
-Nenhuma licença específica foi identificada nos arquivos analisados. Caso o projeto seja compartilhado publicamente para reutilização, recomenda-se escolher e adicionar uma licença apropriada.
+Erick: Responsável pelos clientes
+Gabriel: Responsável pelos produtos
+Wilames: Responsável pelos pedidos.
