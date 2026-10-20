@@ -121,5 +121,7 @@ Erick Kran, Gabriel Campos e Wilames
 ## Divisão de responsabilidades
 
 Erick: Responsável pelos clientes
+
 Gabriel: Responsável pelos produtos
+
 Wilames: Responsável pelos pedidos.
