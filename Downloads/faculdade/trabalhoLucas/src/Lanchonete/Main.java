@@ -137,109 +137,98 @@ public class Main{
         
     }
 
-    public static void menuPedido() {
-        Scanner scanner = new Scanner(System.in);
+    public static void menuPedido(){
+        Scanner scanner = new  Scanner(System.in);
         int opcao;
         do {
             System.out.println("1 - Cadastrar pedido");
             System.out.println("2 - Listar pedidos");
-            System.out.println("3 - Adicionar ou remover produto de um pedido");
-            System.out.println("4 - Alterar status de um pedido");
-            System.out.println("0 - Voltar");
+            System.out.println("3 - Alterar quantidade de produto em um pedido");
+            System.out.println("4 - alterar status de um pedido");
+            System.out.println("0 - Sair");
             opcao = lerInteiro(scanner, "Escolha: ");
+            
             switch (opcao) {
-                case 1: criarPedido(scanner); break;
-                case 2: listarPedidos(); break;
-                case 3: alterarProdutosPedido(scanner); break;
-                case 4: alterarStatus(scanner); break;
-                case 0: break;
-                default: System.out.println("Opcao invalida.");
+                case 1:
+                    criarPedido(scanner);
+                    break;
+                case 2: 
+                    listarPedidos();
+                    break;
+                
+                case 3:
+                    alterarQuantidade(scanner);
+                    break;
+                case 4:
+                    alterarStatus(scanner);
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
             }
         } while (opcao != 0);
+        
         menuPrincipal();
     }
 
     private static void criarPedido(Scanner scanner) {
-        if (totalPedidos >= Max_pedidos) {
+        if (totalPedidos == Max_pedidos) {
             System.out.println("Limite de pedidos atingido.");
             return;
         }
-        System.out.println("\n===== ESCOLHA O CLIENTE =====");
-        clienteLista.listarCliente();
-        int indiceCliente = lerInteiro(scanner, "Numero do cliente: ");
-        Cliente cliente = clienteLista.buscarCliente(indiceCliente);
-        if (cliente == null) {
-            System.out.println("Cliente nao encontrado. Cadastre um cliente primeiro.");
-            return;
-        }
-        int capacidade = lerInteiro(scanner, "Capacidade maxima de produtos: ");
+        int capacidade = lerInteiro(scanner, "Capacidade maxima do pedido: ");
         if (capacidade <= 0) {
-            System.out.println("A capacidade deve ser maior que zero.");
+            System.out.println("A capacidede maxima deve ser maior que zero.");
             return;
         }
+
         Pedidos pedido = new Pedidos(proximoNumero, capacidade);
-        pedido.setCliente(cliente);
-        produtoLista.getProdutos();
-        while (pedido.getQuantidadeProdutos() < pedido.getCapacidade()) {
-            int indice = lerInteiro(scanner, "Numero do produto (-1 para finalizar): ");
-            if (indice == -1) break;
-            Produto produto = produtoLista.buscarProduto(indice);
-            if (produto == null) {
-                System.out.println("Produto nao encontrado. Cadastre um produto primeiro.");
-                continue;
-            }
-            if (pedido.adicionarProduto(produto)) {
-                System.out.println("Adicionado: " + produto.getNome());
-            }
-        }
-        if (pedido.getQuantidadeProdutos() == 0) {
-            System.out.println("Pedido nao salvo: nenhum produto selecionado.");
-            return;
-        }
         pedidos[totalPedidos] = pedido;
         totalPedidos++;
         proximoNumero++;
-        System.out.println("Pedido criado com sucesso!");
-        pedido.exibirPedido();
+
+        System.out.println("Pedido" + pedido.getNumeroPedido() + " criado com sucesso.");
+
     }
 
+
+   
+
+
+    
     private static void listarPedidos() {
         if (totalPedidos == 0) {
             System.out.println("Nenhum pedido cadastrado.");
             return;
         }
-        for (int i = 0; i < totalPedidos; i++) pedidos[i].exibirPedido();
-    }
-
-    private static void alterarProdutosPedido(Scanner scanner) {
-        Pedidos pedido = escolherPedido(scanner);
-        if (pedido == null) return;
-        pedido.exibirPedido();
-        System.out.println("1 - Adicionar produto");
-        System.out.println("2 - Remover produto");
-        int opcao = lerInteiro(scanner, "Escolha: ");
-        if (opcao == 1) {
-            if (pedido.getQuantidadeProdutos() >= pedido.getCapacidade()) {
-                System.out.println("Pedido cheio.");
-                return;
-            }
-            produtoLista.getProdutos();
-            int indice = lerInteiro(scanner, "Numero do produto: ");
-            Produto produto = produtoLista.buscarProduto(indice);
-            if (produto == null) {
-                System.out.println("Produto nao encontrado.");
-            } else if (pedido.adicionarProduto(produto)) {
-                System.out.println("Produto adicionado!");
-            }
-        } else if (opcao == 2) {
-            int indice = lerInteiro(scanner, "Posicao do produto no pedido (inicia em 0): ");
-            System.out.println(pedido.removerProduto(indice)
-                    ? "Produto removido!" : "Posicao invalida!");
-        } else {
-            System.out.println("Opcao invalida.");
+ 
+        System.out.println("\n===== PEDIDOS =====");
+        for (int i = 0; i < totalPedidos; i++) {
+            Pedidos p = pedidos[i];
+            System.out.println("Pedido " + p.getNumeroPedido()
+                    + " | Status: " + p.getStatus()
+                    + " | Produtos: " + p.getQuantidadeProduto() + "/" + p.getCapacidade());
         }
     }
-
+ 
+    private static void alterarQuantidade(Scanner scanner) {
+        Pedidos pedido = escolherPedido(scanner);
+        if (pedido == null) {
+            return;
+        }
+ 
+        int quantidade = lerInteiro(scanner, "Nova quantidade de produtos (0 a "
+                + pedido.getCapacidade() + "): ");
+ 
+        if (quantidade < 0 || quantidade > pedido.getCapacidade()) {
+            System.out.println("Quantidade inválida!");
+        } else {
+            pedido.setQuantidadeProdutos(quantidade);
+            System.out.println("Quantidade atualizada!");
+        }
+    }
+ 
     private static void alterarStatus(Scanner scanner) {
         Pedidos pedido = escolherPedido(scanner);
         if (pedido == null) {
@@ -276,7 +265,7 @@ public class Main{
         System.out.println("Status atualizado para: " + pedido.getStatus());
     }
  
-    
+    // Pede o número do pedido e devolve o pedido (ou null se não existir)
     private static Pedidos escolherPedido(Scanner scanner) {
         if (totalPedidos == 0) {
             System.out.println("Nenhum pedido cadastrado.");
@@ -294,13 +283,13 @@ public class Main{
         return null;
     }
  
-    
+    // Lê um número inteiro sem quebrar o programa se o usuário digitar errado
     private static int lerInteiro(Scanner scanner, String mensagem) {
         while (true) {
             System.out.print(mensagem);
             String linha = scanner.nextLine().trim();
  
-            
+            // Ignora linha vazia (sobra do nextInt() usado no resto do projeto)
             while (linha.isEmpty()) {
                 linha = scanner.nextLine().trim();
             }

@@ -54,10 +54,4 @@ public class Clientes {
         }
         return cliente;
     }
-
-    
-    public Cliente buscarCliente(int indice) {
-        if (indice < 0 || indice >= clienteLista.size()) return null;
-        return clienteLista.get(indice);
-    }
 }
